@@ -15,7 +15,7 @@ const ms = ()=>{
   return fixed(8,val,alphabet)}
 
 const uid = ()=>rand()+ms()
-const ms = id=>int(id.slice(4),alphabet)
+const toMs = id=>int(id.slice(4),alphabet)
 
 module.exports = uid
-module.exports.ms = ms
+module.exports.ms = toMs
