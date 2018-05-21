@@ -18,3 +18,4 @@ const uid = ()=>rand()+ms()
 const ms = id=>int(id.slice(4),alphabet)
 
 module.exports = uid
+module.exports.ms = ms
