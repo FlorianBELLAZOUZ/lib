@@ -21,15 +21,15 @@ const forEach = tag=>object=>func=>{
 
 // reduce :: Tag:String => Object => Function => initial => *
 const reduce = tag=>object=>func=>initial=>{
-  const out = initial
-  const reduce = child =>out = func(out)(child)
+  let out=initial
+  const reduce=child=>out=func(out)(child)
   forEach(tag)(object)(reduce)
   return out }
 
 // filter :: tag:String => Object => Function => Array
-const filter = tag => object => func => {
+const filter = tag=>object=>func=>{
   const test = array=>child=>{
-    if(func(child)) array.push(child)
+    if(func(child))array.push(child)
     return array }
   return reduce(tag)(object)(test)([]) }
 
