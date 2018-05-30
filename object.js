@@ -1,4 +1,4 @@
-const Crypto = require('./Crypto')
+const Strg = require('./string')
 const {keys} = Object
 
 const reduce = (func,init,obj)=>
@@ -11,7 +11,7 @@ const clone = (obj,cln={})=>{
 
 const stringify = JSON.stringify
 const parse = string=>{try{return JSON.parse(string)}catch(e){return}}
-const encrypt = (key,obj)=>Crypto.encrypt(key,stringify(obj))
-const decrypt = (key,string)=>parse(Crypto.decrypt(key,string))
+const encrypt = (key,obj)=>Strg.encrypt(key,stringify(obj))
+const decrypt = (key,string)=>parse(Strg.decrypt(key,string))
 
 module.exports = {reduce,clone,encrypt,decrypt}
