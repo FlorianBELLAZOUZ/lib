@@ -6,7 +6,10 @@ const encrypt = (key,a)=>{
   const cc = crypto.createCipher('aes192',key)
   return cc.update(a,utf,base)+cc.final(base) }
 const decrypt = (key,a)=>{
-  const dc = crypto.createDecipher('aes192',key)
-  return dc.update(a,base,utf)+dc.final(utf) }
+  try{
+    const dc = crypto.createDecipher('aes192',key)
+    return dc.update(a,base,utf)+dc.final(utf) }
+  catch(e){
+    return undefined }}
 
 module.exports = {encrypt,decrypt}
