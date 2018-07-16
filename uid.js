@@ -1,5 +1,5 @@
 const {alphabet:Alphabet,int,fixed} = require('./alphabet')
-const {times} = require('./func')
+const {times} = require('./array')
 
 const fromCharCode = a=>String.fromCharCode(a)
 const AZ=times(26,i=>65+i).map(fromCharCode)
