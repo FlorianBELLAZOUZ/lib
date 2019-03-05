@@ -1,0 +1,10 @@
+const {it,equal} = require('../test')
+const {weeks} = require('../date')
+
+it('should equal 1',()=>equal(weeks(20190101),1))
+it('should equal 1',()=>equal(weeks(20190106),1))
+it('should equal 2',()=>equal(weeks(20190108),2))
+it('should equal 2',()=>equal(weeks(20190107),2))
+it('should equal 10',()=>equal(weeks(20190305),10))
+it('should equal 52',()=>equal(weeks(20181230),52))
+it('should equal 1',()=>equal(weeks(20181231),1))
