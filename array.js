@@ -8,8 +8,8 @@ const removes = (a,func)=>{
   for(var i=a.length-1;i>=0;i--)
     if(func(a[i])) a.splice(a.indexOf(a[i]),1)
   return a }
-const remove = (array,el)=>{
-  const i = array.indexOf(el)
-  if(i!=-1) array.splice(i,1) }
+const remove = (a,el)=>{
+  const i = a.indexOf(el)
+  if(i!=-1) a.splice(i,1) }
 
 module.exports = {uniq,flat,times,equal,removes,remove}
