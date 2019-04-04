@@ -11,5 +11,8 @@ const removes = (a,func)=>{
 const remove = (a,el)=>{
   const i = a.indexOf(el)
   if(i!=-1) a.splice(i,1) }
+const each = (a,func)=>{
+  for(var i=a.length-1;i>=0;i--){
+    func(a[i])} }
 
-module.exports = {uniq,flat,times,equal,removes,remove}
+module.exports = {uniq,flat,times,equal,removes,remove,each}
