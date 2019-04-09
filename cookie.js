@@ -13,6 +13,7 @@ const get = (cookies,key)=>
 
 const browser = {
   set:(key,value,opts)=>window.document.cookie=set(key,value,opts),
-  get:(key)=>get(window.document.cookie,key) }
+  get:(key)=>get(window.document.cookie,key),
+  remove:(key)=>window.document.cookie=set(key,'') }
 
 module.exports = {set,get,browser}
