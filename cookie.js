@@ -11,4 +11,8 @@ const get = (cookies,key)=>
     acc[c.slice(0,i).trim()]=c.slice(i+1)
     return acc },{})[key]
 
-module.exports = {set,get}
+const browser = {
+  set:(key,value,opts)=>window.document.cookie=set(key,value,opts),
+  get:(key)=>get(window.document.cookie,key) }
+
+module.exports = {set,get,browser}
