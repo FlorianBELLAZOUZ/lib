@@ -1,6 +1,7 @@
-const today = ()=>{
+const today = timeZone=>{
   const d = new Date()
-  return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate() }
+  const [m,d,y]=d.toLocaleDateString(undefined,{timeZone}).split('/')
+  return y*10000+m*100+d*1 }
 
 const weeks = date=>{
   const d = (date||new Date())
