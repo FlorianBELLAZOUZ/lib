@@ -9,6 +9,6 @@ const fail = e=>write(' \x1b[31mfail : ' + e.message+' '+stack(e)+end)
 const done = ()=>write(' \x1b[32mdone'+end)
 const it = (name,func)=>(write('\x1b[30m\x1b[1m'+name),test(func,done,fail))
 const ios = (func,ios)=>{
-  ios.forEach(([i,o])=>it(`${i} should equal ${o}`,()=>equal(func(...i),o))) }
+  ios.forEach(([i,o,name])=>it(name||`${i} should equal ${o}`,()=>equal(func(...i),o))) }
 
 module.exports = {it,equal,ios}
