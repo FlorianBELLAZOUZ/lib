@@ -2,6 +2,7 @@ const u = undefined
 
 const diff = {
   days:(a,b)=>{
+    a=a+'';b=b+'';
     const [ay,am,ad] = [a.slice(0,4),a.slice(4,6),a.slice(6,8)]
     const [by,bm,bd] = [b.slice(0,4),b.slice(4,6),b.slice(6,8)]
     const autc = Date.UTC(ay*1,am-1,ad*1)
