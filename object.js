@@ -16,5 +16,6 @@ const decrypt = (key,string)=>parse(Strg.decrypt(key,string))
 const is = a=>typeof a==='object'
 const kEqual = (a,b)=>keys(a).every(ka=>is(a[ka])?kEqual(a[ka],b[ka]):a[ka]==b[ka])
 const equal = (a,b)=>kEqual(a,b)&&kEqual(b,a)
+const has = (o,k)=>o===undefined?false:k in o
 
-module.exports = {reduce,clone,encrypt,decrypt,equal,is}
+module.exports = {reduce,clone,encrypt,decrypt,equal,is,has}
