@@ -17,5 +17,6 @@ const is = a=>typeof a==='object'
 const kEqual = (a,b)=>keys(a).every(ka=>is(a[ka])?kEqual(a[ka],b[ka]):a[ka]==b[ka])
 const equal = (a,b)=>kEqual(a,b)&&kEqual(b,a)
 const has = (o,k)=>o===undefined?false:k in o
+const filter = (o,f)=>keys(o).filter(f).reduce((acc,k)=>(acc[k]=o[k],acc),{})
 
-module.exports = {reduce,clone,encrypt,decrypt,equal,is,has}
+module.exports = {reduce,clone,encrypt,decrypt,equal,is,has,filter}
