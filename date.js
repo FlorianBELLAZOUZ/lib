@@ -17,15 +17,15 @@ const hours = timeZone=>{
 
 const today = timeZone=>{
   const dt = new Date()
-  const [m,d,y]=dt.toLocaleDateString(u,{timeZone}).split('/')
-  return y*10000+m*100+d*1 }
+  const [mo,day,yr]=dt.toLocaleDateString(u,{timeZone}).split('/')
+  return yr*10000+mo*100+day*1 }
 
 const weeks = date=>{
-  const d = (date||new Date())
-  d.setHours(0, 0, 0, 0)
-  d.setDate(d.getDate()+3-(d.getDay()+6)%7) // Thursday in current week decides the year
-  const w1 = new Date(d.getFullYear(),0,4) // January 4 is always in week1
+  const da = (date||new Date())
+  da.setHours(0, 0, 0, 0)
+  da.setDate(da.getDate()+3-(da.getDay()+6)%7) // Thursday in current week decides the year
+  const w1 = new Date(da.getFullYear(),0,4) // January 4 is always in week1
   // Adjust to Thursday in week1 and count number of weeks from d to w1
-  return 1+Math.round(((d-w1)/86400000-3+(w1.getDay()+6)%7)/7) }
+  return 1+Math.round(((da-w1)/86400000-3+(w1.getDay()+6)%7)/7) }
 
 module.exports={today,weeks,hours,diff}
