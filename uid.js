@@ -17,7 +17,9 @@ const ms = ()=>{
 const uid = ()=>rand()+ms()
 const toMs = id=>int(id.slice(4),alphabet)
 const toInt = id=>int(id,alphabet)
+const toRand = id=>int(id.slice(0,4),alphabet)
 
 module.exports = uid
 module.exports.ms = toMs
 module.exports.int = toInt
+module.exports.rand = toRand
