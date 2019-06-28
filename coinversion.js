@@ -1,12 +1,5 @@
-const tierPrices = (curr,daily) => {
-  const currency = daily.cointributors.currencies[curr]
-  if (!currency) return
-  return daily.cointributors.tiers.map((t,i)=>currency.price*(2**i))}
-
-const convert = (value,curr,daily) => {
-  const prices = tierPrices(curr, daily)
-  const tiers = daily.cointributors.tiers
-  if (!prices) return
+const convert = (value,tiers,price) => {
+  const prices = tiers.map((t,i)=>price*(2**i))
   let tier
   for(tier=0;tier<prices.length;tier++){
     let price=prices[tier]
