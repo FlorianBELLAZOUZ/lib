@@ -1,4 +1,5 @@
 const convert = (value,tiers,price) => {
+  if (!value)return
   const prices = tiers.map((t,i)=>price*(2**i))
   let tier
   for(tier=0;tier<prices.length;tier++){
