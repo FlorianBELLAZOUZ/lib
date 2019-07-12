@@ -11,9 +11,11 @@ const get = (cookies,key)=>
     acc[c.slice(0,i).trim()]=c.slice(i+1)
     return acc },{})[key]
 
+const remove = (key)=>`${key}=; expires=Thu, 01 Jan 1970 00:00:01 GMT;`
+
 const browser = {
   set:(key,value,opts)=>window.document.cookie=set(key,value,opts),
   get:(key)=>get(window.document.cookie,key),
-  remove:(key)=>window.document.cookie=set(key,'') }
+  remove:(key)=>window.document.cookie=remove(key) }
 
-module.exports = {set,get,browser}
+module.exports = {set,get,remove,browser}
