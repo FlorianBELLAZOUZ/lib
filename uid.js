@@ -19,7 +19,11 @@ const toMs = id=>int(id.slice(4),alphabet)
 const toInt = id=>int(id,alphabet)
 const toRand = id=>int(id.slice(0,4),alphabet)
 
+const allInAlphabet = id=>Array.from(id).every(e=>alphabet.indexOf(e)!=-1)
+const valid = id=>id.length==12&&allInAlphabet(id)
+
 module.exports = uid
 module.exports.ms = toMs
 module.exports.int = toInt
 module.exports.rand = toRand
+module.exports.valid = valid
