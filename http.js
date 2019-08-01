@@ -9,7 +9,8 @@ const fetch = method=>(url,data,headers,opts)=>
     const response = res=>{
       res.on('data',c=>body+=c)
       res.on('end',()=>suc(body)) }
-    const options = assign(Url.parse(url),{method,headers},opts)
+    const options = assign(Url.parse(url),{method},opts)
+    options.headers = assign({'Content-Length':data.length},headers)
     const request = options.protocol==='http:'?http:https
     const req = request(options,response)
     req.on('error',rej)
@@ -20,7 +21,6 @@ const post = fetch('post')
 
 const json = method=>(url,data,headers,opts)=>{
   const d = JSON.stringify(data)
-  const h = {'Content-Length':d.length}
-  return fetch(method)(url,d,assign(h,headers),opts).then(b=>b&&JSON.parse(b))}
+  return fetch(method)(url,d,headers,opts).then(b=>b&&JSON.parse(b))}
 
 module.exports = {fetch,get,post,json:{get:json('get'),post:json('post')}}
