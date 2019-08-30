@@ -10,7 +10,7 @@ const fetch = method=>(url,data,headers,opts)=>
       res.on('data',c=>body+=c)
       res.on('end',()=>suc(body)) }
     const options = assign(Url.parse(url),{method},opts)
-    data&&assign(options.headers,{'Content-Length':data.length},headers)
+    options.headers=assign(data?{'Content-Length':data.length}:{},headers)
     const request = options.protocol==='http:'?http:https
     const req = request(options,response)
     req.on('error',rej)
