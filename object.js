@@ -19,4 +19,5 @@ const equal = (a,b)=>kEqual(a,b)&&kEqual(b,a)
 const has = (o,k)=>o===undefined?false:k in o
 const filter = (o,f)=>keys(o).filter(f).reduce((acc,k)=>(acc[k]=o[k],acc),{})
 
-module.exports = {reduce,clone,encrypt,decrypt,equal,is,has,filter}
+module.exports = {reduce,clone,encrypt,decrypt,equal,is,has,filter,
+  parse,stringify}
