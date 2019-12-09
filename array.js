@@ -1,5 +1,6 @@
 const {is:o,equal:oe} = require('./object')
 
+const concat = (...a)=>([]).concat(a)
 const flat = a=>a.reduce((a,el)=>a.concat(Array.isArray(el)?flat(el):el),[])
 const times = (a,func)=>{let i=0;let o=[];while(i<a){o.push(func(i++))};return o}
 const uniq = a=>a.filter((el,i)=>a.indexOf(el)===i)
@@ -34,4 +35,4 @@ const groupBy = (a,func)=>{
       i-- }
   return groups }
 
-module.exports = {uniq,flat,times,equal,removes,remove,each,groupBy,diff}
+module.exports = {uniq,flat,times,equal,removes,remove,each,groupBy,diff,concat}

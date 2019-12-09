@@ -5,7 +5,7 @@ const end = '\n\x1b[39m'
 const write = m=>stdout.write(m)
 const test = (func,ok,fail)=>{try{func();ok()}catch(e){fail(e)}}
 const stack = e=>e.stack.split('\n')[1].trim()
-const fail = e=>write(' \x1b[31mfail : '+e.message.replace(/\n/g,' ')+stack(e)+end)
+const fail = e=>write(' \x1b[31mFail :'+e.message.replace(/\n/g,' ')+stack(e)+end)
 const done = ()=>write(' \x1b[32mdone'+end)
 const it = (name,func)=>(write('\x1b[30m\x1b[1m'+name),test(func,done,fail))
 const ios = (func,ios)=>{

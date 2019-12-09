@@ -1,13 +1,17 @@
 const u = undefined
 
+const to = date=>{
+  date=date+''
+  const [y,m,d] = [date.slice(0,4),date.slice(4,6),date.slice(6,8)]
+  return new Date(Date.UTC(y*1,m-1,d*1)) }
+const from = date=>{
+  const [m,d,y]=(new Date(date)).toLocaleDateString().split('/')
+  return y*10000+m*100+d*1 }
+
 const diff = {
-  days:(a,b)=>{
-    a=a+'';b=b+'';
-    const [ay,am,ad] = [a.slice(0,4),a.slice(4,6),a.slice(6,8)]
-    const [by,bm,bd] = [b.slice(0,4),b.slice(4,6),b.slice(6,8)]
-    const autc = Date.UTC(ay*1,am-1,ad*1)
-    const butc = Date.UTC(by*1,bm-1,bd*1)
-    return Math.floor((butc-autc)/(1000*60*60*24)) } }
+  days:(a,b)=>Math.floor((to(b)-to(a))/(1000*60*60*24))  }
+const inc = {
+  days:(date,inc)=>from(to(date).setDate(to(date).getDate()+inc)) }
 
 const hours = timeZone=>{
   const d = new Date()
@@ -28,4 +32,4 @@ const weeks = date=>{
   // Adjust to Thursday in week1 and count number of weeks from d to w1
   return 1+Math.round(((d-w1)/86400000-3+(w1.getDay()+6)%7)/7) }
 
-module.exports={today,weeks,hours,diff}
+module.exports={today,weeks,hours,diff,inc,to,from}
