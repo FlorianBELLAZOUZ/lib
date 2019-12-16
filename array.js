@@ -6,6 +6,7 @@ const times = (a,func)=>{let i=0;let o=[];while(i<a){o.push(func(i++))};return o
 const uniq = a=>a.filter((el,i)=>a.indexOf(el)===i)
 const equal = (a,b)=>a.every((el,i)=>o(el)?oe(el,b[i]):el==b[i])
 const diff = (a,b)=>a.filter(aa=>b.every(bb=>aa!=bb))
+const sum = a=>a.reduce((acc,el)=>acc+el,0)
 const removes = (a,func)=>{
   for(var i=a.length-1;i>=0;i--)
     if(func(a[i])) a.splice(a.indexOf(a[i]),1)
@@ -34,5 +35,11 @@ const groupBy = (a,func)=>{
       temp.splice(i,1) }
       i-- }
   return groups }
+const between = (f,a)=>
+  a.reduce((acc,el,i)=>{
+    acc.push(el)
+    if(i!=a.length-1) acc.push(f(i))
+    return acc },[])
 
-module.exports = {uniq,flat,times,equal,removes,remove,each,groupBy,diff,concat}
+module.exports = {uniq,flat,times,equal,removes,remove,each,groupBy,
+  diff,concat,sum,between}
