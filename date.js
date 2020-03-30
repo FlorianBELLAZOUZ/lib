@@ -16,8 +16,7 @@ const inc = {
 const hours = timeZone=>{
   const d = new Date()
   const opts = {timeZone,hour12:false}
-  const [_,hours] = d.toLocaleString(u,opts).split(' ').split(':')
-  return hours }
+  return d.toLocaleString(u,opts).split(' ')[1].split(':')[0] }
 
 const today = timeZone=>{
   const dt = new Date()
