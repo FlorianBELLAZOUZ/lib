@@ -1,5 +1,6 @@
 const {pass} = require('/kaaarot/statics/datas/secrets')
-const {encrypt,decrypt,parse} = require('./object')
+const {encrypt,decrypt} = require('./crypt').object
+const {parse} = require('./object')
 const Fs = require('fs')
 
 const query = obj=>Object.keys(obj).reduce((acc,k)=>acc+k+'='+obj[k]+'&','')

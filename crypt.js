@@ -14,7 +14,7 @@ const decrypt = (key,a)=>{
     return undefined }}
 
 const object = {
-  encrypt:(key,obj)=>Strg.encrypt(key,stringify(obj)),
-  decrypt:(key,string)=>parse(Strg.decrypt(key,string)), }
+  encrypt:(key,obj)=>encrypt(key,stringify(obj)),
+  decrypt:(key,string)=>parse(decrypt(key,string)), }
 
 module.exports = {encrypt,decrypt,object}
