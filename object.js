@@ -1,4 +1,3 @@
-const Strg = require('./string')
 const {keys} = Object
 
 const reduce = (func,init,obj)=>
