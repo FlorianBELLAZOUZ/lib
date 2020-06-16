@@ -12,4 +12,10 @@ const decrypt = (key,a)=>{
   catch(e){
     return undefined }}
 
-module.exports = {encrypt,decrypt}
+const stringify = JSON.stringify
+const parse = string=>{try{return JSON.parse(string)}catch(e){return}}
+const object = {
+  encrypt:(key,obj)=>Strg.encrypt(key,stringify(obj))
+  decrypt:(key,string)=>parse(Strg.decrypt(key,string)) }
+
+module.exports = {encrypt,decrypt,object}
