@@ -1,3 +1,4 @@
+const {parse,stringify} = require('./object')
 const crypto = require('crypto')
 
 const utf = 'utf8'
@@ -12,8 +13,6 @@ const decrypt = (key,a)=>{
   catch(e){
     return undefined }}
 
-const stringify = JSON.stringify
-const parse = string=>{try{return JSON.parse(string)}catch(e){return}}
 const object = {
   encrypt:(key,obj)=>Strg.encrypt(key,stringify(obj)),
   decrypt:(key,string)=>parse(Strg.decrypt(key,string)), }

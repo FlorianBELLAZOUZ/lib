@@ -8,6 +8,8 @@ const clone = (obj,cln={})=>{
     cln[i]=(typeof obj[i]=='object')?clone(obj[i],obj[i].constructor()):obj[i]
   return cln }
 
+const stringify = JSON.stringify
+const parse = string=>{try{return JSON.parse(string)}catch(e){return}}
 const forEach = (obj,func)=>keys(obj).forEach(k=>func(obj[k],k))
 const is = a=>typeof a==='object'
 const kEqual = (a,b)=>keys(a).every(ka=>is(a[ka])?kEqual(a[ka],b[ka]):a[ka]==b[ka])
@@ -16,4 +18,5 @@ const has = (o,k)=>o===undefined?false:k in o
 const filter = (o,f)=>keys(o).filter(f).reduce((acc,k)=>(acc[k]=o[k],acc),{})
 const picks = (o,ks)=>ks.reduce((acc,k)=>(acc[k]=o[k],acc),{})
 
-module.exports = {forEach,reduce,clone,equal,is,has,filter,picks}
+module.exports = {forEach,reduce,clone,equal,is,has,filter,picks,
+  stringify,parse}
