@@ -1,4 +1,3 @@
-const {pass} = require('/kaaarot/statics/datas/secrets')
 const {encrypt,decrypt} = require('./crypt').object
 const {parse} = require('./object')
 const Fs = require('fs')
@@ -12,14 +11,14 @@ const redirect = (url,res)=>{
 const cookie = (res,key,data)=>
   res.writeHeader('Set-Cookie',`${key}=${data}; Secure; HttpOnly; Domain=kaaarot.com; Path=/`)
 const cookiepub = (res,key,data)=>
-  res.writeHeader('Set-Cookie',`${key}=${data}; Secure; Domain=kaaarot.com; Path=/`)
+  res.writeHeader('Set-Cookie',`${key}=${data}; Secure; Domain=kaaarot.com`)
 const cookies = req=>req.getHeader('cookie').split(';').reduce((acc,c)=>{
   const i = c.indexOf('=')
   acc[c.slice(0,i).trim()]=c.slice(i+1)
   return acc },{})
 
-const crypt = (res,obj)=>cookie(res,'profile',encrypt(pass,obj))
-const auth = req=>decrypt(pass,cookies(req).profile)
+const crypt = (pass,res,obj)=>cookie(res,'profile',encrypt(pass,obj))
+const auth = (pass,req)=>decrypt(pass,cookies(req).profile)
 
 const raw = res=>{
   return new Promise((d,e)=>{
