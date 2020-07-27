@@ -41,6 +41,14 @@ const between = (f,a)=>
     acc.push(el)
     if(i!=a.length-1) acc.push(f(i))
     return acc },[])
+const update = (a,b,key='id')=>{
+  let news=[]
+  b.forEach(be=>{
+    const e = a.find(ae=>ae[key]==be[key])
+    if(e){Object.assign(e,be)}
+    else{news.push(be)} })
+  a.push(...news)
+  return a }
 
 module.exports = {last,uniq,flat,times,equal,removes,remove,each,groupBy,
-  diff,concat,sum,between}
+  diff,concat,sum,between,update}
