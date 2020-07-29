@@ -17,6 +17,10 @@ const equal = (a,b)=>kEqual(a,b)&&kEqual(b,a)
 const has = (o,k)=>o===undefined?false:k in o
 const filter = (o,f)=>keys(o).filter(f).reduce((acc,k)=>(acc[k]=o[k],acc),{})
 const picks = (o,ks)=>ks.reduce((acc,k)=>(acc[k]=o[k],acc),{})
+const assign = (a={},b={})=>{
+  for(var k in b)
+    a[k]=(typeof b[k]=='object')?assign(a[k],b[k]):b[k]
+  return a }
 
 module.exports = {forEach,reduce,clone,equal,is,has,filter,picks,
-  stringify,parse}
+  stringify,parse,assign}
