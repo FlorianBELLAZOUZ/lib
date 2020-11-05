@@ -21,6 +21,7 @@ const assign = (a={},b={})=>{
   for(var k in b)
     a[k]=(typeof b[k]=='object')?assign(a[k],b[k]):b[k]
   return a }
+const invert = a=>keys(a).reduce((acc,k)=>(acc[a[k]]=k,acc),{})
 
 module.exports = {forEach,reduce,clone,equal,is,has,filter,picks,
-  stringify,parse,assign}
+  stringify,parse,assign,invert}
