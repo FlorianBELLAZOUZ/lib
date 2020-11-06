@@ -1,4 +1,4 @@
-const {sqrt,pow,sin,PI,abs} = Math
+const {sqrt,pow,cos,sin,PI,abs} = Math
 
 const backInOut=t=>{
   var s = 1.70158 * 1.525
