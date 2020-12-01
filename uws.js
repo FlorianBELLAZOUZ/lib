@@ -3,7 +3,7 @@ const {parse} = require('./object')
 const Fs = require('fs')
 
 const form = {
-  encode:obj=>Object.keys(obj).reduce((acc,k)=>acc+k+'='+obj[k]+'&',''),
+  encode:obj=>Object.keys(obj).map(k=>k+'='+(encodeURIComponent(obj[k])||'""')).join('&'),
   decode:obj=>obj.split('&').reduce((acc,el)=>{
     const [key,val]=el.split('=');acc[key]=decodeURIComponent(val);return acc },{}) }
 const queries = req=>form.decode(req.getQuery())
