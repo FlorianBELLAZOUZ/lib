@@ -2,7 +2,11 @@ const {encrypt,decrypt} = require('./crypt').object
 const {parse} = require('./object')
 const Fs = require('fs')
 
-const query = obj=>Object.keys(obj).reduce((acc,k)=>acc+k+'='+obj[k]+'&','')
+const form = {
+  encode:obj=>Object.keys(obj).reduce((acc,k)=>acc+k+'='+obj[k]+'&',''),
+  decode:obj=>obj.split('&').reduce((acc,el)=>{
+    const [key,val]=el.split('=');acc[key]=decodeURIComponent(val);return acc },{}) }
+const queries = req=>form.decode(req.getQuery())
 const jwt = s=>parse(Buffer.from(s.split('.')[1],'base64').toString('utf8'))
 const redirect = (url,res)=>{
   res.writeStatus('302 Found')
@@ -52,5 +56,5 @@ const static = (url,path)=>{
     return o },{})
   return (res,req)=>res.end(files[req.getUrl().replace(url,'')]) }
 
-module.exports = {query,jwt,redirect,cookie,cookiepub,crypt,auth,cors,
-  raw,json,text,cookies,auth,static}
+module.exports = {jwt,redirect,cookie,cookiepub,crypt,auth,cors,
+  raw,json,text,cookies,auth,static,form,queries}
