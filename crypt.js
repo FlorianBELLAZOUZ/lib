@@ -3,12 +3,16 @@ const crypto = require('crypto')
 
 const utf = 'utf8'
 const base = 'base64'
+const algo = 'aes192'
+const iv = Buffer.alloc(16, 0)
 const encrypt = (key,a)=>{
-  const cc = crypto.createCipher('aes192',key)
-  return cc.update(a,utf,base)+cc.final(base) }
+  const k = crypto.scryptSync(key,'salt',24)
+  const c = crypto.createCipheriv(algo,k,iv)
+  return c.update(a,utf,base)+c.final(base) }
 const decrypt = (key,a)=>{
   try{
-    const dc = crypto.createDecipher('aes192',key)
+    const k = crypto.scryptSync(key,'salt',24)
+    const dc = crypto.createDecipheriv(algo,k,iv)
     return dc.update(a,base,utf)+dc.final(utf) }
   catch(e){
     return undefined }}
