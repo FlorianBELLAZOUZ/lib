@@ -14,7 +14,7 @@ const redirect = (url,res)=>{
   res.writeHeader('Location',url)
   res.end() }
 const cookie = (res,key,data)=>
-  res.writeHeader('Set-Cookie',`${key}=${data}; Secure; HttpOnly; Domain=kaaarot.com; Path=/`)
+  res.writeHeader('Set-Cookie',`${key}=${data}; Secure; Expires=Tue, 19 Jan 2038 04:14:07 GMT; HttpOnly; Domain=kaaarot.com; Path=/`)
 const cookiepub = (res,key,data)=>
   res.writeHeader('Set-Cookie',`${key}=${data}; Secure; Domain=kaaarot.com`)
 const cookies = req=>req.getHeader('cookie').split(';').reduce((acc,c)=>{
