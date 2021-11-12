@@ -2,7 +2,6 @@ const {encrypt,decrypt} = require('./crypt').object
 const {parse} = require('./object')
 const Fs = require('fs')
 
-const err = (res,msg)=>res.writeStatus('400 Bad Request').end(msg)
 const form = {
   encode:obj=>Object.keys(obj).map(k=>k+'='+(encodeURIComponent(obj[k])||'""')).join('&'),
   decode:obj=>obj.split('&').reduce((acc,el)=>{
@@ -57,8 +56,10 @@ const static = (url,path)=>{
     return o },{})
   return (res,req)=>res.end(files[req.getUrl().replace(url,'')]) }
 
-const end = (alive,res,string)=>{
+const end = (res,string,alive)=>{
   if(alive) res.end(string) }
+const err = (res,msg,alive)=>{
+  if(alive) res.writeStatus('400 Bad Request').end(msg) }
 
 module.exports = {jwt,redirect,cookie,cookiepub,crypt,auth,cors,
   raw,json,text,cookies,auth,static,form,queries,err,end}
