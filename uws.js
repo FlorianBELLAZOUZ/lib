@@ -57,5 +57,8 @@ const static = (url,path)=>{
     return o },{})
   return (res,req)=>res.end(files[req.getUrl().replace(url,'')]) }
 
+const end = (alive,res,string)=>{
+  if(alive) res.end(string) }
+
 module.exports = {jwt,redirect,cookie,cookiepub,crypt,auth,cors,
-  raw,json,text,cookies,auth,static,form,queries,err}
+  raw,json,text,cookies,auth,static,form,queries,err,end}
